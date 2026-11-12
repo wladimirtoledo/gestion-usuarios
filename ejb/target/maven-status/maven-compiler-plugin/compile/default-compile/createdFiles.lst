@@ -1,0 +1,3 @@
+com\ejemplo\gestionusuarios\service\UsuarioServiceLocal.class
+com\ejemplo\gestionusuarios\dto\UsuarioDTO.class
+com\ejemplo\gestionusuarios\service\UsuarioServiceBean.class
