@@ -1,2 +1,4 @@
-C:\wamp64\www\gestion-usuarios\web\src\main\java\com\ejemplo\gestionusuarios\web\UsuarioServlet.java
-C:\wamp64\www\gestion-usuarios\web\src\main\java\com\ejemplo\gestionusuarios\web\UsuarioUnoServlet.java
+C:\wamp64\www\gestion-usuarios\web\src\main\java\com\ejemplo\gestionusuarios\web\rest\UsuarioRestApplication.java
+C:\wamp64\www\gestion-usuarios\web\src\main\java\com\ejemplo\gestionusuarios\web\mvc\UsuarioServlet.java
+C:\wamp64\www\gestion-usuarios\web\src\main\java\com\ejemplo\gestionusuarios\web\rest\UsuarioResource.java
+C:\wamp64\www\gestion-usuarios\web\src\main\java\com\ejemplo\gestionusuarios\web\view\UsuarioUnoServlet.java

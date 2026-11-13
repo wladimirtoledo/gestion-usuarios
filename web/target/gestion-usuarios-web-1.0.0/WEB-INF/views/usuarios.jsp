@@ -164,14 +164,12 @@
 
 <body>
     <main>
-
         <h1>Gestión de usuarios 2026 (WTL)</h1>
 
         <section aria-labelledby="nuevo-usuario">
             <h2 id="nuevo-usuario">Nuevo usuario</h2>
 
             <form method="post" action="${pageContext.request.contextPath}/usuarios">
-
                 <p>
                     <label for="nombre">Nombre</label>
                     <input id="nombre" name="nombre" type="text" maxlength="150" placeholder="Ingrese el nombre completo" required>
@@ -181,7 +179,6 @@
                     <label for="email">Correo electrónico</label>
                     <input id="email" name="email" type="email" maxlength="254" placeholder="ejemplo@correo.com" required>
                 </p>
-
                 <button type="submit">Crear usuario</button>
             </form>
         </section>
@@ -221,7 +218,6 @@
                 </c:otherwise>
             </c:choose>
         </section>
-
     </main>
 
 </body>

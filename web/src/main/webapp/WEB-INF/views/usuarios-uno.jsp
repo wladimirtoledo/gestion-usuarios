@@ -1,6 +1,5 @@
 
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -8,170 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Gestión de usuarios 2026</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/estilos.css">
-    <!-- style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background: #f1f5f9;
-            color: #334155;
-            min-height: 100vh;
-            padding: 40px 20px;
-        }
-
-        main {
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        h1 {
-            color: #1e293b;
-            font-size: 30px;
-            margin-bottom: 30px;
-            font-weight: 700;
-        }
-
-        h2 {
-            font-size: 19px;
-            color: #1e293b;
-            margin-bottom: 25px;
-        }
-
-        section {
-            background: #ffffff;
-            padding: 30px;
-            border-radius: 12px;
-            margin-bottom: 25px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
-            border: 1px solid #e2e8f0;
-        }
-
-        form p {
-            margin-bottom: 20px;
-        }
-
-        label {
-            display: block;
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: #475569;
-        }
-
-        input {
-            width: 100%;
-            padding: 12px 14px;
-            border: 1px solid #cbd5e1;
-            border-radius: 7px;
-            font-size: 14px;
-            color: #334155;
-            transition: border-color 0.2s, box-shadow 0.2s;
-        }
-
-        input:focus {
-            outline: none;
-            border-color: #2563eb;
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
-        }
-
-        button {
-            background: #2563eb;
-            color: white;
-            border: none;
-            padding: 12px 22px;
-            border-radius: 7px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.2s, transform 0.2s;
-        }
-
-        button:hover {
-            background: #1d4ed8;
-            transform: translateY(-1px);
-        }
-
-        .table-container {
-            width: 100%;
-            overflow-x: auto;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 14px;
-            white-space: nowrap;
-        }
-
-        thead {
-            background: #f1f5f9;
-        }
-
-        th {
-            color: #475569;
-            font-weight: 600;
-            text-align: left;
-            padding: 15px;
-            border-bottom: 2px solid #e2e8f0;
-        }
-
-        td {
-            padding: 15px;
-            border-bottom: 1px solid #e2e8f0;
-            color: #475569;
-        }
-
-        tbody tr:nth-child(even) {
-            background: #f8fafc;
-        }
-
-        tbody tr:hover {
-            background: #eff6ff;
-        }
-
-        .empty-message {
-            padding: 20px;
-            background: #f8fafc;
-            border-radius: 8px;
-            color: #64748b;
-            font-size: 14px;
-            text-align: center;
-        }
-
-        @media (max-width: 600px) {
-            body {
-                padding: 20px 12px;
-            }
-
-            h1 {
-                font-size: 24px;
-            }
-
-            section {
-                padding: 20px 15px;
-            }
-
-            button {
-                width: 100%;
-            }
-        }
-    </style -->
+    
 </head>
 
 <body>
     <main>
-
-        <h1>Gestión de usuarios 2026 (WTL)</h1>
+        <h1>Gestión de usuarios 2026 (WTL) CRUD</h1>
 
         <section aria-labelledby="nuevo-usuario">
             <h2 id="nuevo-usuario">Nuevo usuario</h2>
 
-            <form method="post" action="${pageContext.request.contextPath}/usuarios">
-
+            <form id="form-crear">
                 <p>
                     <label for="nombre">Nombre</label>
                     <input id="nombre" name="nombre" type="text" maxlength="150" placeholder="Ingrese el nombre completo" required>
@@ -181,7 +27,6 @@
                     <label for="email">Correo electrónico</label>
                     <input id="email" name="email" type="email" maxlength="254" placeholder="ejemplo@correo.com" required>
                 </p>
-
                 <button type="submit">Crear usuario</button>
             </form>
         </section>
@@ -189,95 +34,200 @@
         <section aria-labelledby="lista-usuarios">
             <h2 id="lista-usuarios">Usuarios registrados</h2>
 
-            <c:choose>
-                <c:when test="${empty usuarios}">
-                    <p class="empty-message">No hay usuarios registrados.</p>
-                </c:when>
-
-                <c:otherwise>
-                    <div class="table-container">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th scope="col">ID</th>
-                                    <th scope="col">Nombre</th>
-                                    <th scope="col">Correo electrónico</th>
-                                    <th scope="col">Fecha de creación</th>
-                                    <th scope="col">Gestión</th>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                                <c:forEach var="usuario" items="${usuarios}">
-                                    <tr>
-                                        <td><c:out value="${usuario.id}" /></td>
-                                        <td><c:out value="${usuario.nombre}" /></td>
-                                        <td><c:out value="${usuario.email}" /></td>
-                                        <td><c:out value="${usuario.fechaCreacion}" /></td>
-                                        <td>
-                                            <div class="acciones">
-                                                <!-- Botón Editar: pasa ID y Nombre de forma segura mediante atributos data-* -->
-                                                <button type="button"
-                                                        class="btn-sm btn-secondary"
-                                                        data-id="${usuario.id}"
-                                                        data-nombre="<c:out value='${usuario.nombre}' />"
-                                                        onclick="abrirModalEditar(this)">
-                                                    Editar
-                                                </button>
-
-                                                <!-- Formulario Eliminar con ventana de confirmación -->
-                                                <form method="post"
-                                                    action="${pageContext.request.contextPath}/usuarios"
-                                                    onsubmit="return confirm('¿Estás seguro de que deseas eliminar este usuario?');">
-                                                    <input type="hidden" name="accion" value="eliminar">
-                                                    <input type="hidden" name="id" value="${usuario.id}">
-                                                    <button type="submit" class="btn-sm btn-danger">Eliminar</button>
-                                                </form>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </c:forEach>
-                            </tbody>
-                        </table>
-                    </div>
-                </c:otherwise>
-            </c:choose>
+            <p id="mensaje" class="empty-message" role="status" aria-live="polite">Cargando usuarios...</p>
+            <div class="table-container" id="tabla-container" hidden>
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Correo electrónico</th>
+                            <th scope="col">Fecha de creación</th>
+                            <th scope="col">Gestión</th>
+                        </tr>
+                    </thead>
+                    <tbody id="usuarios-body"></tbody>
+                </table>
+            </div>
         </section>
 
     </main>
 
-
     <dialog id="modal-editar">
-        <h3>Editar nombre de usuario</h3>
-        <form method="post" action="${pageContext.request.contextPath}/usuarios">
-            <input type="hidden" name="accion" value="editar">
-            <input type="hidden" id="edit-id" name="id">
+        <h3>Editar usuario</h3>
+        <form id="form-editar">
+            <input type="hidden" id="edit-id">
             <p>
                 <label for="edit-nombre">Nuevo nombre</label>
                 <input id="edit-nombre" name="nombre" type="text" maxlength="150" required>
             </p>
+            <p>
+                <label for="edit-email">Correo electrónico</label>
+                <input id="edit-email" name="email" type="email" maxlength="254" required>
+            </p>
             <div class="modal-botones">
                 <button type="submit">Guardar cambios</button>
-                <button type="button" class="btn-secondary" onclick="cerrarModalEditar()">Cancelar</button>
+                <button type="button" class="btn-secondary" id="cancelar-edicion">Cancelar</button>
             </div>
         </form>
     </dialog>
 
     <script>
+        const apiUrl = '${pageContext.request.contextPath}/api/usuarios';
+        const formCrear = document.getElementById('form-crear');
+        const formEditar = document.getElementById('form-editar');
         const modalEditar = document.getElementById('modal-editar');
-        const inputEditId = document.getElementById('edit-id');
-        const inputEditNombre = document.getElementById('edit-nombre');
+        const tablaContainer = document.getElementById('tabla-container');
+        const usuariosBody = document.getElementById('usuarios-body');
+        const mensaje = document.getElementById('mensaje');
 
-        function abrirModalEditar(boton) {
-            inputEditId.value = boton.getAttribute('data-id');
-            inputEditNombre.value = boton.getAttribute('data-nombre');
-            modalEditar.showModal();
+        function mostrarMensaje(texto) {
+            mensaje.textContent = texto;
+            mensaje.hidden = !texto;
         }
 
-        function cerrarModalEditar() {
+        function crearCelda(valor) {
+            const celda = document.createElement('td');
+            celda.textContent = valor == null ? '' : valor;
+            return celda;
+        }
+
+        function crearBoton(texto, clase, accion) {
+            const boton = document.createElement('button');
+            boton.type = 'button';
+            boton.className = clase;
+            boton.textContent = texto;
+            boton.addEventListener('click', accion);
+            return boton;
+        }
+
+        function formatearFecha(valor) {
+            if (!valor) {
+                return '';
+            }
+
+            const fecha = new Date(String(valor).replace(/\[[^\]]+\]$/, ''));
+            if (Number.isNaN(fecha.getTime())) {
+                return '';
+            }
+
+            const dosDigitos = function (numero) {
+                return String(numero).padStart(2, '0');
+            };
+            return dosDigitos(fecha.getDate()) + '/'
+                + dosDigitos(fecha.getMonth() + 1) + '/'
+                + fecha.getFullYear() + ' '
+                + dosDigitos(fecha.getHours()) + ':'
+                + dosDigitos(fecha.getMinutes());
+        }
+
+        function renderizarUsuarios(usuarios) {
+            usuariosBody.replaceChildren();
+            tablaContainer.hidden = usuarios.length === 0;
+            mostrarMensaje(usuarios.length === 0 ? 'No hay usuarios registrados.' : '');
+
+            usuarios.forEach(function (usuario) {
+                const fila = document.createElement('tr');
+                fila.appendChild(crearCelda(usuario.id));
+                fila.appendChild(crearCelda(usuario.nombre));
+                fila.appendChild(crearCelda(usuario.email));
+
+                fila.appendChild(crearCelda(formatearFecha(usuario.fechaCreacion)));
+
+                const celdaAcciones = document.createElement('td');
+                const acciones = document.createElement('div');
+                acciones.className = 'acciones';
+                acciones.appendChild(crearBoton('Editar', 'btn-sm btn-secondary', function () {
+                    document.getElementById('edit-id').value = usuario.id;
+                    document.getElementById('edit-nombre').value = usuario.nombre;
+                    document.getElementById('edit-email').value = usuario.email;
+                    modalEditar.showModal();
+                }));
+                acciones.appendChild(crearBoton('Eliminar', 'btn-sm btn-danger', function () {
+                    eliminarUsuario(usuario.id);
+                }));
+                celdaAcciones.appendChild(acciones);
+                fila.appendChild(celdaAcciones);
+                usuariosBody.appendChild(fila);
+            });
+        }
+
+        async function comprobarRespuesta(respuesta) {
+            if (!respuesta.ok) {
+                const detalle = await respuesta.text();
+                throw new Error(detalle || 'La solicitud no pudo completarse.');
+            }
+            return respuesta;
+        }
+
+        async function cargarUsuarios() {
+            mostrarMensaje('Cargando usuarios...');
+            tablaContainer.hidden = true;
+            try {
+                const respuesta = await comprobarRespuesta(await fetch(apiUrl));
+                renderizarUsuarios(await respuesta.json());
+            } catch (error) {
+                mostrarMensaje(error.message);
+            }
+        }
+
+        async function enviarUsuario(url, metodo, usuario) {
+            await comprobarRespuesta(await fetch(url, {
+                method: metodo,
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(usuario)
+            }));
+            await cargarUsuarios();
+        }
+
+        async function eliminarUsuario(id) {
+            if (!window.confirm('¿Estás seguro de que deseas eliminar este usuario?')) {
+                return;
+            }
+            try {
+                await comprobarRespuesta(await fetch(apiUrl + '/' + encodeURIComponent(id), {
+                    method: 'DELETE'
+                }));
+                await cargarUsuarios();
+            } catch (error) {
+                mostrarMensaje(error.message);
+            }
+        }
+
+        formCrear.addEventListener('submit', async function (evento) {
+            evento.preventDefault();
+            try {
+                await enviarUsuario(apiUrl, 'POST', {
+                    nombre: formCrear.elements.nombre.value,
+                    email: formCrear.elements.email.value
+                });
+                formCrear.reset();
+            } catch (error) {
+                mostrarMensaje(error.message);
+            }
+        });
+
+        formEditar.addEventListener('submit', async function (evento) {
+            evento.preventDefault();
+            const id = document.getElementById('edit-id').value;
+            try {
+                await enviarUsuario(apiUrl + '/' + encodeURIComponent(id), 'PUT', {
+                    nombre: formEditar.elements.nombre.value,
+                    email: formEditar.elements.email.value
+                });
+                modalEditar.close();
+            } catch (error) {
+                mostrarMensaje(error.message);
+            }
+        });
+
+        document.getElementById('cancelar-edicion').addEventListener('click', function () {
             modalEditar.close();
-        }
+        });
+
+        cargarUsuarios();
+
     </script>
-    
+
 </body>
 </html>

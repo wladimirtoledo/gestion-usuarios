@@ -22,7 +22,9 @@ Requisitos tecnicos obligatorios:
 
 
 
-
+MVC → UsuarioServlet; (Controller)
+REST → UsuarioResource; 
+servicio de negocio compartido → EJB.
 
 
 PowerShell:
@@ -31,11 +33,18 @@ PowerShell:
 Cuando arranque:
 & 'C:\wildfly-26.1.3.Final\bin\jboss-cli.bat' --controller=localhost:10090 --connect --command='deploy "C:\wamp64\www\gestion-usuarios\ear\target\gestion-usuarios-ear-1.0.0.ear" --force'
 
-Ejercicio práctico de código
+Ejercicio práctico de código (Solicitado)
 http://localhost:8180/gestion-usuarios/usuarios
 
-Mejoras CRUD
+Ejercicio práctico de código (Mejorado CRUD Api-Rest)
 http://localhost:8180/gestion-usuarios/usuarios-uno
+http://localhost:8180/gestion-usuarios/api/usuarios
+
+
+{
+  "nombre": "Ana PPérez",
+  "email": "aaana@example.com"
+}
 
 
 $env:JAVA_HOME = 'C:\Program Files\Java\jdk-21.0.11'
@@ -44,3 +53,9 @@ mvn clean package
 if ($LASTEXITCODE -eq 0) {
     & 'C:\wildfly-26.1.3.Final\bin\jboss-cli.bat' --controller=localhost:10090 --connect --command='deploy "C:\wamp64\www\gestion-usuarios\ear\target\gestion-usuarios-ear-1.0.0.ear" --force'
 }
+
+
+
+
+Wladimir Toledo León
+

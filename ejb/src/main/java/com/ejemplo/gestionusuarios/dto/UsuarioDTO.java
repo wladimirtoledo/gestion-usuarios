@@ -3,6 +3,10 @@ package com.ejemplo.gestionusuarios.dto;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * Entidad
+ * UsuarioDTO
+ */
 public class UsuarioDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -10,6 +14,7 @@ public class UsuarioDTO implements Serializable {
     private String nombre;
     private String email;
     private Date fechaCreacion;
+    
 
     public UsuarioDTO() {
     }

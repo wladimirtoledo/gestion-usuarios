@@ -1,2 +1,4 @@
-com\ejemplo\gestionusuarios\web\UsuarioServlet.class
-com\ejemplo\gestionusuarios\web\UsuarioUnoServlet.class
+com\ejemplo\gestionusuarios\web\rest\UsuarioResource.class
+com\ejemplo\gestionusuarios\web\mvc\UsuarioServlet.class
+com\ejemplo\gestionusuarios\web\view\UsuarioUnoServlet.class
+com\ejemplo\gestionusuarios\web\rest\UsuarioRestApplication.class

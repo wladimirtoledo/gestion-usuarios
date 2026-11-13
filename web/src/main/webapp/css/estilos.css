@@ -43,7 +43,6 @@ h2 {
     color: var(--text-main);
 }
 
-/* Estilo de tarjeta para cada sección */
 section {
     background: var(--bg-card);
     padding: 1.5rem;
@@ -52,7 +51,6 @@ section {
     border: 1px solid var(--border);
 }
 
-/* Formulario */
 form {
     display: grid;
     gap: 1rem;
@@ -102,7 +100,6 @@ button:hover {
     background-color: var(--primary-hover);
 }
 
-/* Tabla responsiva */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -141,7 +138,6 @@ tbody tr:last-child td {
     border-bottom: none;
 }
 
-/* Mensaje cuando la lista está vacía */
 section > p {
     color: var(--text-muted);
     font-style: italic;
@@ -175,12 +171,10 @@ section > p {
     background-color: #b91c1c;
 }
 
-/* Ajuste para que la tabla acomode bien la nueva columna */
 thead, tbody {
     table-layout: auto;
 }
 
-/* Ventana modal nativa para editar */
 dialog {
     margin: auto;
     border: 1px solid var(--border);
@@ -206,3 +200,7 @@ dialog h3 {
     gap: 0.75rem;
     margin-top: 0.5rem;
 }
+
+
+
+/* WLADIMIR TOLEDO 2026 */
